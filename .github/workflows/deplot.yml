@@ -21,7 +21,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.HALF_PRIVATE }}
           script: |
             cd /var/www/html/half
             git pull -f

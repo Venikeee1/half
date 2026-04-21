@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vescrow 1.2.3 Theme */
+@layer base {
+  :root {
+    --background: 36 33% 97%;
+    --foreground: 24 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+
+    --primary: 24 85% 42%;
+    --primary-foreground: 36 100% 97%;
+
+    --secondary: 36 40% 92%;
+    --secondary-foreground: 24 30% 20%;
+
+    --muted: 36 20% 92%;
+    --muted-foreground: 24 10% 45%;
+
+    --accent: 16 75% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 36 20% 86%;
+    --input: 36 20% 86%;
+    --ring: 24 85% 42%;
+
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 24 15% 8%;
+    --foreground: 36 20% 92%;
+
+    --card: 24 12% 11%;
+    --card-foreground: 36 20% 92%;
+
+    --popover: 24 12% 11%;
+    --popover-foreground: 36 20% 92%;
+
+    --primary: 24 85% 55%;
+    --primary-foreground: 24 15% 8%;
+
+    --secondary: 24 15% 16%;
+    --secondary-foreground: 36 20% 92%;
+
+    --muted: 24 15% 16%;
+    --muted-foreground: 36 15% 55%;
+
+    --accent: 16 70% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 24 15% 20%;
+    --input: 24 15% 20%;
+    --ring: 24 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}

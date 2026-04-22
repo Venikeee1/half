@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
-    "build:copy": "npx tsr generate && tsc -b && vite build && cp -a dist/. /var/www/html"
+    "build:copy": "npm tsr generate && tsc -b && vite build && cp -a dist/. /var/www/html"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@tanstack/router-cli": "^1.166.33",
     "@tanstack/router-plugin": "^1.93.0",
     "@types/node": "^25.6.0",
     "@types/react": "^18.3.18",

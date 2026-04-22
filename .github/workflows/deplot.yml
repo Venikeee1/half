@@ -24,8 +24,7 @@ jobs:
           key: ${{ secrets.HALF_PRIVATE }}
           script: |
             cd /var/www/html/half
-            git fetch origin
-            git reset --hard origin/main
+            git pull origin main
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             npm ci

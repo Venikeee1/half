@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
-    "build:copy": "tsc -b && vite build && cp -a dist/. /var/www/html"
+    "build:copy": "npx tsr generate && tsc -b && vite build && cp -a dist/. /var/www/html"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",

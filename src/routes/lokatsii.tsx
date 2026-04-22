@@ -4,7 +4,9 @@ import { useLocations, useCategories } from "@/hooks/useLocations";
 import { LocationCard } from "@/components/LocationCard";
 import { SearchBar } from "@/components/SearchBar";
 import { CategoryFilter } from "@/components/CategoryFilter";
-import { MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { MapPin, Shuffle } from "lucide-react";
+import type { Location } from "@/types/location";
 
 export const Route = createFileRoute("/lokatsii")({
   component: LokatsiiPage,
@@ -13,6 +15,7 @@ export const Route = createFileRoute("/lokatsii")({
 function LokatsiiPage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
+  const [picked, setPicked] = useState<Location | null>(null);
 
   const { data: locations = [], isLoading: locationsLoading } = useLocations();
   const { data: categories = [], isLoading: categoriesLoading } = useCategories();
@@ -25,6 +28,12 @@ function LokatsiiPage() {
       return matchesSearch && matchesCategory;
     });
   }, [locations, search, category]);
+
+  function pickRandom() {
+    if (locations.length === 0) return;
+    const idx = Math.floor(Math.random() * locations.length);
+    setPicked(locations[idx]);
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -40,14 +49,37 @@ function LokatsiiPage() {
         </div>
       </div>
 
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <SearchBar value={search} onChange={setSearch} />
-        <CategoryFilter
-          categories={categories}
-          value={category}
-          onChange={setCategory}
-          disabled={categoriesLoading}
-        />
+      <div className="mb-6">
+        <Button
+          onClick={pickRandom}
+          disabled={locationsLoading}
+          className="mb-4 w-full sm:w-auto"
+        >
+          <Shuffle className="h-4 w-4" />
+          Випадкова локація
+        </Button>
+
+        {picked && (
+          <div className="mb-4 rounded-xl border bg-primary/5 px-5 py-4">
+            <p className="mb-1 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+              Випадкова локація
+            </p>
+            <p className="text-xl font-semibold text-foreground">{picked.name}</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {picked.category} · Енергія: {picked.energy}
+            </p>
+          </div>
+        )}
+
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <SearchBar value={search} onChange={setSearch} />
+          <CategoryFilter
+            categories={categories}
+            value={category}
+            onChange={setCategory}
+            disabled={categoriesLoading}
+          />
+        </div>
       </div>
 
       {locationsLoading ? (

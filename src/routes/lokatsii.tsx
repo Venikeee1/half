@@ -22,8 +22,7 @@ function LokatsiiPage() {
 
   const filtered = useMemo(() => {
     return locations.filter((loc) => {
-      const matchesSearch =
-        search === "" || loc.name.toLowerCase().includes(search.toLowerCase());
+      const matchesSearch = search === "" || loc.name.toLowerCase().includes(search.toLowerCase());
       const matchesCategory = category === "all" || loc.category === category;
       return matchesSearch && matchesCategory;
     });
@@ -50,15 +49,6 @@ function LokatsiiPage() {
       </div>
 
       <div className="mb-6">
-        <Button
-          onClick={pickRandom}
-          disabled={locationsLoading}
-          className="mb-4 w-full sm:w-auto"
-        >
-          <Shuffle className="h-4 w-4" />
-          Випадкова локація
-        </Button>
-
         {picked && (
           <div className="mb-4 rounded-xl border bg-primary/5 px-5 py-4">
             <p className="mb-1 text-xs font-medium uppercase tracking-wide text-muted-foreground">
@@ -70,6 +60,11 @@ function LokatsiiPage() {
             </p>
           </div>
         )}
+
+        <Button onClick={pickRandom} disabled={locationsLoading} className="mb-4 w-full sm:w-auto">
+          <Shuffle className="h-4 w-4" />
+          Випадкова локація
+        </Button>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <SearchBar value={search} onChange={setSearch} />

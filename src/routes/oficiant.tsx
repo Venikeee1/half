@@ -5,7 +5,7 @@ import type { Oficiant } from "@/hooks/useOficiant";
 import { SearchBar } from "@/components/SearchBar";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { Button } from "@/components/ui/button";
-import { Package, Shuffle, Tag } from "lucide-react";
+import { Package, Tag } from "lucide-react";
 
 export const Route = createFileRoute("/oficiant")({
   component: OficiantPage,
